@@ -21,6 +21,67 @@
   box-sizing: border-box;
 }
 
+/* GENERIC */
+
+/* Fonts: iA Writer Mono used for code across templates */
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 400;
+  font-style: normal;
+  src: local("iAWriterMono-Regular5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 400;
+  font-style: italic;
+  src: local("iAWriterMono-Italic5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 450;
+  font-style: normal;
+  src: local("iAWriterMono-Text5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 450;
+  font-style: italic;
+  src: local("iAWriterMono-TextItalic5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 600;
+  font-style: normal;
+  src: local("iAWriterMono-Semibold5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 600;
+  font-style: italic;
+  src: local("iAWriterMono-SemiboldItalic5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 700;
+  font-style: normal;
+  src: local("iAWriterMono-Bold5");
+}
+
+@font-face {
+  font-family: "iAWriterMono5";
+  font-weight: 700;
+  font-style: italic;
+  src: local("iAWriterMono-BoldItalic5");
+}
+
+
 /* BASE */
 
 html,
@@ -41,6 +102,71 @@ body {
   /* font-kerning is enabled by default in OS X Safari 7+ */
   -webkit-font-kerning: normal;
   font-kerning: normal;
+}
+
+/* Accessibility sizing for iOS phones */
+.content-size-4xs > body {
+  font-size: 50%;
+}
+
+.content-size-3xs > body {
+  font-size: 66%;
+}
+
+.content-size-2xs > body {
+  font-size: 73%;
+}
+
+.content-size-xs > body {
+  font-size: 80%;
+}
+
+.content-size-s > body {
+  font-size: 87%;
+}
+
+.content-size-m > body {
+  font-size: 93%;
+}
+
+.content-size-xl > body {
+  font-size: 113%;
+}
+
+.content-size-2xl > body {
+  font-size: 127%;
+}
+
+.content-size-3xl > body {
+  font-size: 140%;
+}
+
+.content-size-4xl > body {
+  font-size: 153%;
+}
+
+.content-size-5xl > body {
+  font-size: 167%;
+}
+
+.content-size-6xl > body {
+  font-size: 180%;
+}
+
+.content-size-7xl > body {
+  font-size: 193%;
+}
+
+.content-size-8xl > body {
+  font-size: 207%;
+}
+
+.content-size-9xl > body {
+  font-size: 217%;
+}
+
+.content-size-10xl > body {
+  font-size: 224%;
 }
 
 body > *:first-child {
@@ -69,15 +195,17 @@ body {
     }
 }
 
+/* iPhone 6 */
 @media screen and (min-width: 375px) {
   body {
-    --padding: 18px;
+    --padding: 22px;
   }
 }
 
+/* iPhone 6+ */
 @media screen and (min-width: 414px) {
   body {
-    --padding: 20px;
+    --padding: 24px;
   }
 }
 
@@ -100,30 +228,34 @@ body {
   }
 }
 
-html.mac {
-  background-color: #fcfcfc;
+/* Responsive adjustments for OS X */
+@media screen and (min-device-width: 1152px) {
+  html {
+    background-color: #fcfcfc;
+  }
+
+  body {
+    --padding: 24px;
+  }
 }
 
-html.mac body {
-  --padding: 24px;
-}
-
-@media screen and (min-width: 480px) {
-  html.mac body {
+@media screen and (min-width: 480px) and (min-device-width: 1152px) {
+  body {
     --padding: 48px;
   }
 }
 
-@media screen and (min-width: 640px) {
-  html.mac body {
+@media screen and (min-width: 640px) and (min-device-width: 1152px) {
+  body {
     --padding: 72px;
   }
 }
 
+
 /* Headings */
 
 body > h1:first-child {
-    margin-top: 0; /* Controlled via body padding-top */
+  margin-top: 0; /* Controlled via body padding-top */
 }
 
 /* Unify space above initial heading in blockquotes (based on 31px line-height) */
@@ -198,7 +330,6 @@ dd {
 /* img is wrapped in p on export by default, so leave as inline */
 img {
   max-width: 100%;
-  height: auto;
   vertical-align: top;
 }
 
@@ -321,6 +452,23 @@ pre code {
 }
 
 code,
+samp,
+kbd {
+  font-family: "iAWriterMono5", "Keyboard", monospace;
+  font-size: calc((15 / 19) * 1em); /* 0.7895em = 15px @ font-size: 19px (based on 12/16px @640 = 15.2px). Values for Serif (smallest), others need overrides */
+  font-weight: 400; /* Regular weight for non-Retina (@1x) */
+}
+
+/* Text weight for Retina (@2x) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), print {
+  code,
+  samp,
+  kbd {
+    font-weight: 450;
+  }
+}
+
+code,
 kbd {
   padding: 0.08333em 0.1667em 0.1667em; /* ~1px 2px 2px when font-size: 12px, taking 1px border into account */
 }
@@ -333,9 +481,9 @@ kbd {
 /* Print styles */
 @media print {
 
-  *:not(.katex *),
-  *:not(.katex *):before,
-  *:not(.katex *):after {
+  *,
+  *:before,
+  *:after {
     color: #000 !important; /* black prints faster */
     box-shadow: none !important;
     text-shadow: none !important;
@@ -358,11 +506,6 @@ kbd {
     margin-top: 0;
   }
 
-  /* give elements on new pages the same top margin as first element of document */
-  .page-break + * {
-    margin-top: 0;
-  }
-
   /* h6 excluded as the page-break-inside rule conflicts with page-initial inline h6 when printed */
   h1,
   h2,
@@ -375,19 +518,8 @@ kbd {
     page-break-after: avoid; /* Not supported by Webkit at time of writing, ref: https://bugs.webkit.org/show_bug.cgi?id=5097 */
   }
 
-  h1::after,
-  h2::after,
-  h3::after,
-  h4::after,
-  h5::after {
-    /* Increase the calculated height of headlines by using an invisible element which allows page-break-inside: avoid to work, thanks to: https://github.com/iainc/iA-Writer-Templates/pull/41 */
-    content: "";
-    display: block;
-    height: 50px;
-    margin-bottom: -50px;
-  }
-
   p {
+    /* Not supported by Webkit at time of writing, ref: https://bugs.webkit.org/show_bug.cgi?id=39735 */
     widows: 3;
     orphans: 3;
   }
@@ -453,13 +585,16 @@ kbd {
   background-color: transparent;
 }
 
-.mac.night-mode,
-.mac.night-mode a {
-  color: #cccccc; /* OS X text color */
-}
+/* Colors for OS X */
+@media screen and (min-device-width: 1152px) {
+  .night-mode,
+  .night-mode a {
+    color: #cccccc; /* OS X text color */
+  }
 
-.mac.night-mode {
-  background-color: #101010;
+  .night-mode {
+    background-color: #101010;
+  }
 }
 
 /* Fake sub-pixel lines */
@@ -480,8 +615,8 @@ kbd {
 .footnotes {
   margin-top: calc((45 / 1080) * 100%); /* 45px when width: 1080px (excluding padding) */
   page-break-before: avoid;
-  font-size: calc((16 / 18) * 1rem); /* 0.8889rem, 16/18px @1080px wide, default for Mono */
-  line-height: calc(27 / 16); /* 1.6875, 27px @1080px wide, default for Mono */
+  font-size: calc((16 / 18) * 1rem); /* 0.8889rem, 16/18px @1080px wide, default for Monospace */
+  line-height: calc(27 / 16); /* 1.6875, 27px @1080px wide, default for Monospace */
 }
 
 .footnotes hr {
@@ -519,15 +654,10 @@ kbd {
 /* Task Lists
    Left padding based on 40px default */
 
-.task-list-item {
-  --checkbox-size: calc(1em * var(--line-height));
-}
-
 /* Position ordinal counters so 1-9 left-align with left content edge. Subsequent counters will begin in gutter. */
 ol .task-list-item {
-  --checkbox-counter-offset: calc(0.5 * var(--checkbox-size));
-  margin-left: var(--checkbox-counter-offset);
-  padding-left: var(--checkbox-counter-offset);
+  margin-left: -0.6667rem; /* ~-10px @ font-size: 15px */
+  padding-left: 0.6667rem; /* ~10px @ font-size: 15px */
 }
 
 /* Hide default bullets for unordered task lists. */
@@ -542,11 +672,11 @@ ul .task-list-item:before {
 
 .task-list-item-checkbox {
   float: left; /* Removes from flow in case of paragraph list items */
-  width: var(--checkbox-size); /* line-height */
-  height: var(--checkbox-size); /* line-height */
-  margin: 0 0 0 calc(-1 * var(--checkbox-size)); /* 0s to overwrite user agent styles */
+  width: 1.6rem; /* Same as p line-height (changing width/height affects svg size) */
+  height: 1.6rem; /* Same as width */
+  margin: 0 0 0 -1.6rem; /* 0s to overwrite user agent styles */
   border: none; /* Otherwise iPhone draws a border */
-  font-size: 1em; /* Required to overwrite user agent styles, set to same as p */
+  font-size: 1rem; /* Required to overwrite user agent styles, set to same as p */
   background-image: url('box.svg');
   background-repeat: no-repeat;
   background-position: 40% 40%; /* x=roughly align with bullets and between ordinal and text, y=4px down to roughly align to baseline. */
@@ -571,12 +701,14 @@ ul .task-list-item:before {
 }
 
 /* OS X color */
-.mac.night-mode .task-list-item-checkbox {
-  background-image: url('box-night-mode-osx.svg');
-}
+@media screen and (min-device-width: 1152px) {
+  .night-mode .task-list-item-checkbox {
+    background-image: url('box-night-mode-osx.svg');
+  }
 
-.mac.night-mode .task-list-item-checkbox:checked {
-  background-image: url('check-night-mode-osx.svg');
+  .night-mode .task-list-item-checkbox:checked {
+    background-image: url('check-night-mode-osx.svg');
+  }
 }
 
 .header, .footer {
@@ -601,6 +733,35 @@ address {
     white-space: pre;
 }
 
+
+/* Smart Table ToolTips */
+
+.tooltip {
+    position: relative;
+}
+
+table .tooltip:after {
+    font-size: 10px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    border-radius: 2px;
+    top: calc(50% - 10px);
+    left: 0%;
+    content: attr(id);
+    padding: 2px 4px;
+    position: absolute;
+    z-index: 98;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+table:hover .tooltip:after {
+    /* Tooltips are always visible, and use transparent background and text color unless table is hovered because WebKit has a bug where table caption jumps around if table cells get a new abolutely positioned element inside. */
+    color: #fff;
+    background-color: #000;
+}
+
 /* Automatic Heading Numbering */
 
 /* Thanks to Phil Archer. http://philarcher.org/diary/2013/headingnumbers/ */
@@ -620,7 +781,7 @@ address {
 /* Don't number author H2 on title page */
 .title > h2:before {content: ""}
 
-span.hashtag:lang("*") {
+span.hashtag {
   font-family: -apple-system;
   font-weight: 400;
   line-height: 1rem;

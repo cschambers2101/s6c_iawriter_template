@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19C57</string>
+	<string>19E287</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.ia.writer.template.serif</string>
+	<string>net.ia.writer.template.helvetica.legacy</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Serif</string>
+	<string>Helvetica</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -23,21 +23,21 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>10</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11C29</string>
+	<string>11E608c</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B90</string>
+	<string>19E258</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1130</string>
+	<string>1150</string>
 	<key>DTXcodeBuild</key>
-	<string>11C29</string>
+	<string>11E608c</string>
 	<key>IATemplateDocumentFile</key>
 	<string>document</string>
 	<key>IATemplateFooterFile</key>
